@@ -1,0 +1,19 @@
+{
+    "name": "mindz-team/laravel-relationships",
+    "description": "This is package that helps to manage updating model relationships automatically by performing an update on single model. When create or update object an observer action is triggered that automatically update, create or sync relations of an object according to relation type.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "roman.szymanski",
+            "email": "r.szymanski@mindz.pl"
+        }
+    ],
+    "require": {
+        "php": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mindz\\LaravelRelationships\\": "src"
+        }
+    }
+}
