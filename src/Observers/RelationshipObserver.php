@@ -18,6 +18,12 @@ class RelationshipObserver
         $this->handleRelation($model, 'saving');
     }
 
+    public function saved(Model $model)
+    {
+        $this->handleRelation($model, 'saved');
+        $model->load(array_keys($model->relationships));
+    }
+
     private function rejectRelationshipsFromAttributes(Model $model): array
     {
         return collect($model->getAttributes())
@@ -44,15 +50,9 @@ class RelationshipObserver
     {
         $relationToHandle = [
             'saving' => ['BelongsTo'],
-            'saved' => ['HasMany', 'BelongsToMany', 'HasOne'],
+            'saved' => ['HasMany', 'BelongsToMany', 'HasOne', 'MorphToMany'],
         ];
 
         return $relationToHandle[$observerEvent] ?? [];
-    }
-
-    public function saved(Model $model)
-    {
-        $this->handleRelation($model, 'saved');
-        $model->load(array_keys($model->relationships));
     }
 }

@@ -31,6 +31,7 @@ Relation types available in package are
 - `BelongsTo`
 - `HasMany`
 - `BelongsToMany`
+- `MorphToMany`
 
 Those (for now) are only relation types that are handled.
 
@@ -239,6 +240,7 @@ Relation objects will be filled with `position` attribute ascending from `0` acc
 
 > `Remember` Missing ids will be removed. Therefore you have to include all ids
 
+<a name="belongstomany"></a>
 ## BelongsToMany
 
 While adding `BelongsToMany` relation objects you should provide a collection of related objects ids
@@ -331,6 +333,10 @@ Similar to `hasMany` sometimes you need to sort `belongsToMany` associated relat
     ]);
 
 > `Remember` Missing related objects will be detached
+
+## MorphToMany
+
+Morph to many relation works has exact mechanics as `BelongsToMany` relation. Therefore its description sholul be under [BelongsToMany](#belongstomany) section 
 
 # Change log
 

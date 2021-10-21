@@ -169,4 +169,9 @@ trait RelationHandle
 
         $model->$relation()->createMany($objectsCollection->where('id', '=', null)->toArray());
     }
+
+    private function handleMorphToMany(Model $model, $relation)
+    {
+        return $this->handleBelongsToMany($model, $relation);
+    }
 }
