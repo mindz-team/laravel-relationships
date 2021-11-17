@@ -21,7 +21,7 @@ class RelationshipObserver
     public function saved(Model $model)
     {
         $this->handleRelation($model, 'saved');
-        $model->load(array_keys($model->relationships));
+        $model->load(collect(array_keys($model->relationships))->transform(fn($relationSnake) => Str::camel($relationSnake))->toArray());
     }
 
     private function rejectRelationshipsFromAttributes(Model $model): array

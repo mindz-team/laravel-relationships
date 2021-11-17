@@ -11,6 +11,7 @@ trait RelationHandle
     private function handleBelongsTo(Model $model, $relation)
     {
         $data = $model->relationships[$relation] ?? null;
+        $relation = Str::camel($relation);
         $keyField = $model->$relation()->getForeignKeyName();
         $model->forceFill([$keyField => is_array($data) && isset($data['id']) ? $data['id'] : $data]);
     }
