@@ -5,6 +5,7 @@ namespace Mindz\LaravelRelationships\Traits;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 trait RelationHandle
 {
@@ -19,6 +20,8 @@ trait RelationHandle
     private function handleHasOne(Model $model, $relation)
     {
         $data = $model->relationships[$relation] ?? null;
+
+        $relation = Str::camel($relation);
 
         if (!$model->$relation && is_null($data)) {
             return;
@@ -44,6 +47,8 @@ trait RelationHandle
         if (is_null($data)) {
             return;
         }
+
+        $relation = Str::camel($relation);
 
         if ($this->actionIs($data, 'attach')) {
             $this->attach($data, $model, $relation);
@@ -114,6 +119,8 @@ trait RelationHandle
         if (is_null($data)) {
             return;
         }
+
+        $relation = Str::camel($relation);
 
         if (isset($data['delete']) && is_array($data['delete'])) {
             $model->$relation()
