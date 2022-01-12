@@ -60,6 +60,11 @@ trait RelationHandle
             return;
         }
 
+        if ($this->actionIs($data, 'update')) {
+            $this->syncWithoutDetaching($data, $model, $relation);
+            return;
+        }
+
         $this->sync($data, $model, $relation);
     }
 
@@ -110,6 +115,13 @@ trait RelationHandle
         }
 
         $model->$relation()->sync($this->moveIdAsKey($objectsCollection));
+    }
+
+    public function syncWithoutDetaching($data, $model, $relation)
+    {
+        $objectsCollection = collect($data['update']);
+
+        $model->$relation()->syncWithoutDetaching($this->moveIdAsKey($objectsCollection));
     }
 
     private function handleHasMany(Model $model, $relation): void

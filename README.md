@@ -316,6 +316,26 @@ Same way works for detaching objects.
 
 All objects missing in array associated with book won't be affected.
 
+### Updating object in relation.
+
+You have also possibility to update one or few related objects by wrapping collection in `update` array
+
+    $book->update(['genders'=> [
+        "update" => [
+            [
+                'id'=>1
+            ],
+            [
+                'id'=>2
+            ],
+            [
+                'id'=>3
+            ],
+        ]
+    ]);
+
+All objects missing in array associated with book won't be affected.
+
 ### Ordering Relation objects
 
 Similar to `hasMany` sometimes you need to sort `belongsToMany` associated relations by `position`. In that case all you need to do is to simply pass attributes array with ids in order you want. This can be possible when there is `position` column in database on pivot table.

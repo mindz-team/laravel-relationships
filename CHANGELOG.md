@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-relationships` will be documented in this file
 
+## 1.1.2 - 2022-01-12
+
+Add possibility to update objects in `BelongsToMany` relation
+
 ## 1.1.1 - 2021-11-17
 
 Fix bugs regarding to case
