@@ -84,16 +84,29 @@ automatically should be included in `relations` method in model class like in ex
 When creating or updating object with `BelongsTo` relation you need simply to append relation name with `id` that refers
 to relation object
 
-    Book::create([...$other attributes,'author'=>1]);
+    Book::create([...$other attributes,'author'=> ['id' => 1]]);
 
 or update
 
-    Book::update(['author'=>1]);
+    Book::update(['author'=> ['id' => 2]]);
 
 or if you desire to remove reference to object from the model you may pass `null` value
 
     Book::update(['author'=>null]);
+    
+**[DEPRECATED]**
+Way described bellow is old way of creating/updating objects with `BelongsTo`, it will be removed in future.
+```
+When creating or updating object with `BelongsTo` relation you need simply to append relation name with `id` that refers
+to relation object
 
+    Book::create([...$other attributes,'author'=> 1]);
+
+or update
+
+    Book::update(['author'=> 1]);
+
+```
 ## HasOne
 
 To handle this relation type automatically you need to pass an attributes regarding this relation
