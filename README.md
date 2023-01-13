@@ -23,6 +23,9 @@ And run
 
 Package handles (for now) only base relations available. Below examples shows how to use it .
 
+#### Remember 
+To configure a package you need to `use Mindz\LaravelRelationships\Traits\Relationship` trait within your model.
+
 ## Relation types
 
 Relation types available in package are
